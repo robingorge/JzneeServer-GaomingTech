@@ -1,0 +1,19 @@
+package com.gmkw.jznee.service.impl;
+
+import com.gmkw.jznee.constants.Constants;
+import com.gmkw.jznee.model.RestResult;
+import com.gmkw.jznee.repository.ToolRepository;
+import com.gmkw.jznee.service.ToolService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ToolServiceImpl  implements ToolService {
+    @Autowired
+    private ToolRepository toolRepository;
+
+    @Override
+    public RestResult getTools() {
+        return new RestResult(Constants.STATE_SUCCESS, "",toolRepository.findAll());
+    }
+}

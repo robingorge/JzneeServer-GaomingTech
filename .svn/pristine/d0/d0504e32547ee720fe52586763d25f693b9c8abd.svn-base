@@ -1,0 +1,128 @@
+function getContextPath() {
+    return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+}
+var sub_app_name=getContextPath();
+
+
+
+
+function updatetable(object){
+
+    content="";
+    for (i=0;i<object.length;i++){
+        var temp=object[i];
+
+        var receiveBy= temp.receiveBy;
+        if (!receiveBy){
+            receiveBy="";
+        }
+
+        var receiveTime = time_convert(temp.receiveTime);
+        var status= temp.status;
+        var warehouseTime=time_convert(temp.warehouseTime);
+
+
+
+        if (status){
+            status="正常";
+        }
+        else{
+            status="废弃";
+        }
+
+        content=content+"<tr>"+"<th>"+temp.id+"</th>"+"<td>"+temp.number+"</td>"+"<td>"+temp.type+"</td>"+"<td>"+temp.warehouseBy+"</td>"+"<td>"+warehouseTime+"</td>"+"<td>"+temp.location+"</td>"+"<td>"+status+"</td>"+"<td>"+receiveBy+"</td>"+"<td>"+receiveTime+"</td>"+"</tr>";
+    }
+
+    $("#table_content").html(content);
+
+    $("#table_content tr").click(function(e) {
+        var a = $(this).children("td")[0].innerHTML;
+        $("#form1_number").val(a);
+        $("#form2_number").val(a);
+        $("#form3_number").val(a);
+    });
+
+
+}
+
+$("#nav_content").load(sub_app_name+"/include/left_tool.html",function(){
+    $("#sidebar_4").addClass("current-page");
+});
+
+
+$( document ).ready(function() {
+    getTools();
+
+
+
+
+    $('#baocun1').click(function(e){
+        e.preventDefault();
+
+
+        var number=$("#form1_number").val();
+        var warehouseby=$("#form1_warehouseby").val();
+        var location=$("#form1_location").val();
+        var type = $("#form1_type").val();
+        console.log("form1:   number   "+number+"///  warehouseby   "+warehouseby+"///  location  "+location+"///  type   "+type);
+
+
+        if (number==""){
+            alert("Number cannot be null");
+            return;
+        }
+        else if (warehouseby=="-- 选择入库人 --"){
+            alert("入库人不能为空");
+            return;
+        }
+        else if (location=="-- 选择存放位置 --"){
+            alert("存放位置不能为空");
+            return;
+        }
+        else if (type=="-- 选择刀具类型 --"){
+            alert("道具类型不能为空");
+            return;
+        }
+
+        addTool(number,warehouseby,location,type);
+
+    });
+
+    $('#baocun2').click(function(e){
+        e.preventDefault();
+
+        var number=$("#form2_number").val();
+        var receiveby=$("#form2_receiveby").val();
+
+        console.log("form2:   number   "+number+"///  receiveby   "+receiveby);
+
+        if (number==""){
+            alert("Number cannot be null");
+            return;
+        }
+        else if (receiveby=="-- 选择领用人 --"){
+            alert("领用人不能为空");
+            return;
+        }
+
+        updateTool(number,receiveby);
+
+    });
+
+
+    $('#baocun3').click(function(e){
+        e.preventDefault();
+
+
+        var number=$("#form3_number").val();
+
+        console.log("form3:   number   "+number);
+
+        if (number==""){
+            alert("Number cannot be null");
+            return;
+        }
+
+        updateTool(number,"no_receive_by");
+    });
+});

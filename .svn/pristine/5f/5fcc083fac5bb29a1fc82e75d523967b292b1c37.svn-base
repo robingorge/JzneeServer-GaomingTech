@@ -1,0 +1,19 @@
+package com.gmkw.jznee.service;
+
+import com.gmkw.jznee.model.RestResult;
+import org.springframework.transaction.annotation.Transactional;
+
+public interface ToolService {
+    public RestResult getTools();
+
+//    public RestResult saveTool(String type, String warehouseBy, String location ,String picPath);
+    public RestResult addTool();
+
+    public RestResult updateTool(Long toolId);
+
+    @Transactional
+    public RestResult deleteTool(Long toolId);
+
+    public RestResult getToolById(Long toolId);
+
+}

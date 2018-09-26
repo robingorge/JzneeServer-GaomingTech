@@ -1,0 +1,25 @@
+package com.gmkw.jznee.entity;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name="operator")
+public class Operator  implements Serializable {
+
+    private static final long serialVersionUID = 1803821580231415454L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    private String number;
+
+    private String job;
+
+    private long superiorId;
+
+    private String superiorName;
+}

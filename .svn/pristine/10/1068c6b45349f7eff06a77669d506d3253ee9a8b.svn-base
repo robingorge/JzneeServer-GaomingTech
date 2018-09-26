@@ -1,0 +1,49 @@
+package com.gmkw.jznee.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class myController {
+    @RequestMapping("/")
+    String home() {
+        return "login";
+    }
+
+    @RequestMapping("/dashboard")
+    String product() {
+        return "dashboard";
+    }
+
+    @RequestMapping("/component_tracing")
+    String c_t() {
+        return "component_tracing";
+    }
+
+    @RequestMapping("/alerts")
+    String alert_function() {
+        return "alerts";
+    }
+
+    @RequestMapping("/cutting_tool_mgmt")
+    String cutting_function() {
+        return "cutting_tool_mgmt/index.html";
+    }
+//    @RequestMapping("/solutions/2")
+//    String solutions_b() {
+//        //System.out.println(orderId);
+//        return "solution_2";
+//    }
+//
+//    @RequestMapping("/solutions/3")
+//    String solutions_c() {
+//
+//        return "solution_3";
+//    }
+//
+//
+//    @RequestMapping("/about_company")
+//    String aboutcompany() {
+//        return "about_company";
+//    }
+}

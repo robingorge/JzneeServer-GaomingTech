@@ -1,0 +1,17 @@
+function addTool() {
+    $(document).ready(function() {
+        // $.post("tool/addTool", {"userPhone":userPhone, "phone":phone},function(data,status){
+        $.post("tool/addTool", { },function(data,status){
+            if(status=="success"){
+                console.log(data);
+                if (data.code == 1) {
+
+                } else {
+
+                }
+            } else{
+
+            }
+        });
+    });
+}

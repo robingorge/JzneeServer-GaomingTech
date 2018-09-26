@@ -1,0 +1,75 @@
+package com.gmkw.jznee.service.impl;
+
+import com.gmkw.jznee.constants.Constants;
+import com.gmkw.jznee.constants.Location;
+import com.gmkw.jznee.entity.Tool;
+import com.gmkw.jznee.model.RestResult;
+import com.gmkw.jznee.repository.read.ToolReadRepository;
+import com.gmkw.jznee.repository.write.ToolWriteRepository;
+import com.gmkw.jznee.service.ToolService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.*;
+import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
+import java.util.Date;
+
+@Service
+@CacheConfig(cacheNames = "tools")
+public class ToolServiceImpl  implements ToolService {
+    @Autowired
+    private ToolReadRepository toolReadRepository;
+
+    @Autowired
+    private ToolWriteRepository toolWriteRepository;
+
+
+    @Override
+    @Cacheable(key = "'tools'")
+    public RestResult getTools() {
+        return new RestResult(Constants.STATE_SUCCESS, "",toolReadRepository.findAll());
+    }
+
+    @Override
+    @CacheEvict(key = "'tools'")
+//    public RestResult saveTool(String type, String warehouseBy, String location, String picPath) {
+    public RestResult addTool() {
+        Tool tool = new Tool();
+        tool.setLocation(Location.A2);
+        tool.setStatus(true);
+        tool.setPicPath("111");
+        tool.setWarehouseBy("马六");
+        tool.setType("222");
+        tool.setWarehouseTime(new Timestamp(new Date().getTime()));
+        toolWriteRepository.save(tool);
+        return new RestResult(Constants.STATE_SUCCESS, "",tool);
+    }
+
+    @Override
+    @CachePut(key = "'tool_' +  #toolId")
+    @CacheEvict(key = "'tools'")
+    public RestResult updateTool(Long toolId) {
+        Tool tool = toolReadRepository.findToolById(toolId);
+        tool.setLocation(Location.A1);
+        tool.setStatus(true);
+        tool.setPicPath("/store");
+        tool.setWarehouseBy("马X");
+        tool.setType("update");
+        tool.setWarehouseTime(new Timestamp(new Date().getTime()));
+        toolWriteRepository.save(tool);
+        return new RestResult(Constants.STATE_SUCCESS, "",tool);
+    }
+
+    @Override
+    @Caching(evict = { @CacheEvict(key = "'tools'"), @CacheEvict(key = "'tool_' +  #toolId") })
+    public RestResult deleteTool(Long toolId) {
+        toolWriteRepository.deleteToolById(toolId);
+        return new RestResult(Constants.STATE_SUCCESS, "");
+    }
+
+    @Override
+    @Cacheable(key = "'tool_' +  #toolId")
+    public RestResult getToolById(Long toolId) {
+        return new RestResult(Constants.STATE_SUCCESS, "",toolReadRepository.findToolById(toolId));
+    }
+}

@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  servlet:
+    contextPath: /jznee
+
+spring:
+  thymeleaf:
+    prefix:
+      classpath:
+        /templates/
+        /static/
+  datasource:
+    write:
+#      url: jdbc:mysql://116.62.166.12:3306/jznee?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+#      username: root
+#      password: gmkw@108686
+      url: jdbc:mysql://localhost:3306/jznee?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+      username: root
+      password: lizehao199411263
+      driver-class-name: com.mysql.jdbc.Driver
+    read:
+      url: jdbc:mysql://localhost:3306/jznee?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+      username: root
+      password: lizehao199411263
+      driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    open-in-view : true
+    hibernate:
+      naming-strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
+      ddl-auto: update
+  cache:
+    ehcache:
+      config: classpath:config/ehcache.xml

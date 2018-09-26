@@ -1,0 +1,108 @@
+package com.gmkw.jznee.entity;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
+
+@Entity
+@Table(name="tool")
+public class Tool implements Serializable {
+
+    private static final long serialVersionUID = -6078348922844222353L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String type;
+
+    private String warehouseBy;
+
+    @Column(columnDefinition="timestamp")
+    private Timestamp warehouseTime;
+
+    private int location;
+
+    @Column(columnDefinition="tinyint(1)")
+    private Boolean status;
+
+    private String receiveBy;
+
+    @Column(columnDefinition="timestamp")
+    private Timestamp receiveTime;
+
+    private String picPath;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getWarehouseBy() {
+        return warehouseBy;
+    }
+
+    public void setWarehouseBy(String warehouseBy) {
+        this.warehouseBy = warehouseBy;
+    }
+
+    public int getLocation() {
+        return location;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
+    }
+
+    public Boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public String getReceiveBy() {
+        return receiveBy;
+    }
+
+    public void setReceiveBy(String receiveBy) {
+        this.receiveBy = receiveBy;
+    }
+
+    public String getPicPath() {
+        return picPath;
+    }
+
+    public void setPicPath(String picPath) {
+        this.picPath = picPath;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Timestamp getWarehouseTime() {
+        return warehouseTime;
+    }
+
+    public void setWarehouseTime(Timestamp warehouseTime) {
+        this.warehouseTime = warehouseTime;
+    }
+
+    public Timestamp getReceiveTime() {
+        return receiveTime;
+    }
+
+    public void setReceiveTime(Timestamp receiveTime) {
+        this.receiveTime = receiveTime;
+    }
+}

@@ -1,0 +1,8 @@
+package com.gmkw.jznee.service;
+
+import com.gmkw.jznee.model.RestResult;
+
+public interface ToolService {
+    public RestResult getTools();
+
+}

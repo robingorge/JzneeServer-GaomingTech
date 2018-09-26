@@ -1,0 +1,37 @@
+package com.gmkw.jznee.controller;
+
+import com.gmkw.jznee.model.RestResult;
+import com.gmkw.jznee.service.ToolService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+@RequestMapping(value = "/tool")
+public class ToolController {
+
+    @Autowired
+    private ToolService toolService;
+
+    @RequestMapping(value = "/getTools", method = {RequestMethod.POST})
+    @ResponseBody
+    public RestResult getTools(){
+        return toolService.getTools();
+    }
+
+    @RequestMapping(value = "/saveTool", method = {RequestMethod.POST})
+    @ResponseBody
+    public RestResult saveTool(){
+        return toolService.saveTool();
+    }
+
+    @RequestMapping(value = "/delTool", method = {RequestMethod.POST})
+    @ResponseBody
+    public RestResult delTool(@RequestParam(value = "toolId") Long toolId){
+        return toolService.deleteTool(toolId);
+    }
+
+}

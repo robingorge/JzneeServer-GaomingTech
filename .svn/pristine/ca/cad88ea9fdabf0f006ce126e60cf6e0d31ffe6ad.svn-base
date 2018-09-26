@@ -1,0 +1,772 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>振江股份 - 产品质量追溯平台</title>
+
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <!-- NProgress -->
+    <link th:href="@{/css/nprogress.css}" rel="stylesheet">
+    <!-- iCheck -->
+    <link th:href="@{/css/green.css}" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link th:href="@{/css/bootstrap-progressbar-3.3.4.min.css}" rel="stylesheet">
+    <!-- JQVMap -->
+    <link th:href="@{/css/jqvmap.min.css}" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link th:href="@{/css/daterangepicker.css}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link th:href="@{/css/custom.min.css}" rel="stylesheet">
+</head>
+
+<body class="nav-md footer_fixed menu_fixed">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a th:href="@{/dashboard}" class="site_title text-center">
+                        <span >产品质量追溯平台</span>
+                    </a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <br/>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <ul class="nav side-menu">
+                            <li>
+                                <a th:href="@{/dashboard}">
+                                    <i class="fa fa-dashboard"></i>
+                                    首页
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/component_tracing}">
+                                    <i class="fa fa-cubes"></i>
+                                    零部件追溯
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/alerts}">
+                                    <i class="fa fa-bullhorn"></i>
+                                    预警提示
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/cutting_tool_mgmt}">
+                                    <i class="fa fa-eraser"></i>
+                                    刀具管理
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="设定">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="全屏">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="锁定">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="退出" th:href="@{/}">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+
+                    <img th:src="@{/images/jznee_logo.png}" alt="" height="30px;" style="margin-top:13px;">
+
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                武达
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li>
+                                    <a href="javascript:;">操作说明</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/}">
+                                        <i class="fa fa-sign-out pull-right"></i>
+                                        退出</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li role="presentation" class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="badge bg-red">6</span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                <li>
+                                    <a>
+                                        <span class="image"><img th:src="@{images/img.jpg}" alt="Profile Image"/></span>
+                                        <span>
+                          <span>wuda </span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img th:src="@{images/img.jpg}" alt="Profile Image"/></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img th:src="@{images/img.jpg}" alt="Profile Image"/></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img th:src="@{images/img.jpg}" alt="Profile Image"/></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="text-center">
+                                        <a>
+                                            <strong>See All Alerts</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>零部件追溯</h3>
+                </div>
+
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="输入零部件编号查询...">
+                            <span class="input-group-btn">
+          <button class="btn btn-default" type="button">查询</button>
+        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>
+                                <i class="fa fa-cubes"></i>
+                                部件信息
+                            </h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+
+                            <div class="row">
+
+                                <div class="col-md-8 text-center">
+                                    <!--<img th:src="@{/images/image_default.jpg}" alt="" width="100%">-->
+                                    <div id="test3d" style="background-color: #00aeef;width:fill-available;height:400px"></div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td>项目名称</td>
+                                            <td class="text-right">
+                                                <strong></strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>项目编号</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>图号</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>件号</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>
+                                <i class="fa fa-cube"></i>
+                                零件信息
+                            </h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="row">
+                                <div class="col-md-3 text-center">
+                                    <img th:src="@{/images/image_default.jpg}" alt="" width="100%">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td>材质</td>
+                                            <td class="text-right">
+                                                <strong></strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>规格</td>
+                                            <td id='guige_info' class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>炉批号</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>供应商</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-3">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td>采购订单号</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>采购人</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>采购日期</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>存放地点</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-3">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td>项目名称</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>项目编号</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>图号</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>件号</td>
+                                            <td class="text-right"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>
+                                <i class="fa fa-spinner"></i>
+                                追溯信息
+                            </h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+
+                            <div class="dashboard-widget-content">
+
+                                <ul class="list-unstyled timeline widget">
+                                    <li>
+                                        <div class="block">
+                                            <div class="block_content">
+                                                <h2 class="title">
+                                                    <strong>涂装</strong>
+                                                </h2>
+                                                <div class="byline">
+                                                    <a>王海滨</a>，
+                                                    <span>2018-5-18 13:12:23</span>
+                                                </div>
+                                                <p class="excerpt">
+                                                    设备信息：
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="block">
+                                            <div class="block_content">
+                                                <h2 class="title">
+                                                    <strong>喷砂</strong>
+                                                </h2>
+                                                <div class="byline">
+                                                    <a>王海滨</a>，
+                                                    <span>2018-5-18 13:12:23</span>
+                                                </div>
+                                                <p class="excerpt">
+                                                    设备信息：
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="block">
+                                            <div class="block_content">
+                                                <h2 class="title">
+                                                    <strong>焊接</strong>
+                                                </h2>
+                                                <div class="byline">
+                                                    <a>王海滨</a>，
+                                                    <span>2018-5-18 13:12:23</span>
+                                                </div>
+                                                <p class="excerpt">
+                                                    设备信息：
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="block">
+                                            <div class="block_content">
+                                                <h2 class="title">
+                                                    <strong>组装</strong>
+                                                </h2>
+                                                <div class="byline">
+                                                    <a>王海滨</a>，
+                                                    <span>2018-5-18 13:12:23</span>
+                                                </div>
+                                                <p class="excerpt">
+                                                    设备信息：
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="block">
+                                            <div class="block_content">
+                                                <h2 class="title">
+                                                    <strong>打磨</strong>
+                                                </h2>
+                                                <div class="byline">
+                                                    <a>王海滨</a>，
+                                                    <span>2018-5-18 13:12:23</span>
+                                                </div>
+                                                <p class="excerpt">
+                                                    设备信息：
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="block">
+                                            <div class="block_content">
+                                                <h2 class="title">
+                                                    <strong>下料</strong>
+                                                </h2>
+                                                <div class="byline">
+                                                    <a>王海滨</a>，
+                                                    <span>2018-5-18 13:12:23</span>
+                                                </div>
+                                                <p class="excerpt">
+                                                    设备信息：
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- footer content -->
+<footer>
+    <div class="pull-right">
+
+        <a href="https://www.mos-gmkw.cn" target="_blank">本平台由 高铭科维科技无锡有限公司 提供支持</a>
+    </div>
+    <div class="clearfix"></div>
+</footer>
+<!-- /footer content -->
+</div>
+</div>
+
+<!-- jQuery -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<!-- Bootstrap -->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<!-- FastClick -->
+<script th:src="@{/js/fastclick.js}"></script>
+<!-- NProgress -->
+<script th:src="@{/js/nprogress.js}"></script>
+<!-- Chart.js} -->
+<script th:src="@{/js/Chart.min.js}"></script>
+<!-- gauge.js} -->
+<script th:src="@{/js/gauge.min.js}"></script>
+<!-- bootstrap-progressbar -->
+<script th:src="@{/js/bootstrap-progressbar.min.js}"></script>
+<!-- iCheck -->
+<script th:src="@{/js/icheck.min.js}"></script>
+<!-- Skycons -->
+<script th:src="@{/js/skycons.js}"></script>
+<!-- Flot -->
+<script th:src="@{/js/jquery.flot.js}"></script>
+<script th:src="@{/js/jquery.flot.pie.js}"></script>
+<script th:src="@{/js/jquery.flot.time.js}"></script>
+<script th:src="@{/js/jquery.flot.stack.js}"></script>
+<script th:src="@{/js/jquery.flot.resize.js}"></script>
+<!-- Flot plugins -->
+<script th:src="@{/js/jquery.flot.orderBars.js}"></script>
+<script th:src="@{/js/jquery.flot.spline.min.js}"></script>
+<script th:src="@{/js/curvedLines.js}"></script>
+<!-- DateJS -->
+<script th:src="@{/js/date.js}"></script>
+<!-- JQVMap -->
+<script th:src="@{/js/jquery.vmap.js}"></script>
+<script th:src="@{/js/jquery.vmap.world.js}"></script>
+<script th:src="@{/js/jquery.vmap.sampledata.js}"></script>
+<!-- bootstrap-daterangepicker -->
+<script th:src="@{/js/moment.min.js}"></script>
+<script th:src="@{/js/daterangepicker.js}"></script>
+
+<!-- Custom Theme Scripts -->
+<script th:src="@{/js/custom.min.js}"></script>
+
+
+<script th:src="@{assets/lib/three/three.js}"></script>
+<script th:src="@{assets/lib/three/js/loaders/OBJLoader.js}"></script>
+<script th:src="@{assets/lib/three/js/controls/OrbitControls.js}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        //initialize the javascript
+        //App.init();
+        //$('#guige_info').html("25");
+    });
+
+
+
+
+
+</script>
+<script>
+
+    var components;
+
+    var container;
+
+    var camera, scene, renderer;
+
+    var mouseX = 0, mouseY = 0;
+
+    var windowX=$('#test3d').width();
+    var windowY=$('#test3d').height();
+    var windowHalfX = windowX / 2;
+    var windowHalfY = windowY / 2;
+
+    var intersects;
+
+    init();
+
+    //newwwwwwwwww
+    controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+    animate();
+
+
+    function init() {
+
+        //container = document.createElement( 'div' );
+        //document.body.appendChild( container );
+
+
+        camera = new THREE.PerspectiveCamera( 45, windowX / windowY, 1, 2000 );
+        camera.position.z = 250;
+        camera.position.y = 250;
+        // scene
+
+        scene = new THREE.Scene();
+
+        var ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
+        scene.add( ambientLight );
+
+        var pointLight = new THREE.PointLight( 0xffffff, 0.8 );
+        camera.add( pointLight );
+        scene.add( camera );
+
+        // texture
+
+        var manager = new THREE.LoadingManager();
+        manager.onProgress = function ( item, loaded, total ) {
+
+            console.log( item, loaded, total );
+
+        };
+
+        var textureLoader = new THREE.TextureLoader( manager );
+        var normalMap = textureLoader.load( "assets/lib/three/model/obj/ninja/normal.jpg" );
+        var aoMap = textureLoader.load( "assets/lib/three/model/obj/ninja/ao.jpg" );
+        var displacementMap = textureLoader.load( "assets/lib/three/model/obj/ninja/displacement.jpg" );
+
+        var texture = textureLoader.load( 'assets/lib/three/textures/UV_Grid_Sm.jpg' );
+
+
+        var onProgress = function ( xhr ) {
+            if ( xhr.lengthComputable ) {
+                var percentComplete = xhr.loaded / xhr.total * 100;
+                console.log( Math.round(percentComplete, 2) + '% downloaded' );
+            }
+        };
+
+        var onError = function ( xhr ) {
+        };
+
+
+
+        var loader = new THREE.OBJLoader( manager );
+
+
+
+        //声明raycaster和mouse变量
+        var raycaster = new THREE.Raycaster();
+        var mouse = new THREE.Vector3();
+
+
+        loader.load( 'assets/lib/three/model/obj/DD23.obj', function ( object ) {
+
+            components = [];
+
+            object.traverse( function ( child ) {
+
+                if ( child instanceof THREE.Mesh ) {
+
+                    // child.material.map = texture;
+                    //console.log(child);
+                    var geo = new THREE.EdgesGeometry( child.geometry ); // or WireframeGeometry
+                    var mat = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 2 } );
+                    var wireframe = new THREE.LineSegments( geo, mat );
+                    //object.add( wireframe );
+
+                    components.push(object);
+                }
+
+            } );
+            object.scale.set (0.1, 0.1, 0.1);
+            object.position.y = -150;
+            scene.add( object );
+
+
+
+
+
+            function onMouseMove( event ) {
+
+                //通过鼠标点击的位置计算出raycaster所需要的点的位置，以屏幕中心为原点，值的范围为-1到1.
+
+                mouse.x = ( (event.clientX - $('#test3d').offset().left) / $('#test3d').width() ) * 2 - 1;
+                mouse.y = -( (event.clientY - $('#test3d').offset().top + document.documentElement.scrollTop) / $('#test3d').height() ) * 2 + 1;
+
+
+                // 通过鼠标点的位置和当前相机的矩阵计算出raycaster
+                raycaster.setFromCamera( mouse, camera );
+
+                if (intersects) {
+                    for (var i = 0; i < intersects.length; i++) {
+                        intersects[i].object.material.color.set(0xffffff);
+                    }
+                }
+
+
+
+                // 获取raycaster直线和所有模型相交的数组集合
+                intersects = raycaster.intersectObjects( object.children );
+
+
+                //将所有的相交的模型的颜色设置为红色，如果只需要将第一个触发事件，那就数组的第一个模型改变颜色即可
+                for ( var i = 0; i < intersects.length; i++ ) {
+                    if (i==0){
+                        intersects[ i ].object.material.color.set( 0xff0000 );
+                        var guige_name=intersects[i].object.name;
+                        console.log(guige_name);
+                        $('#guige_info').html(guige_name);
+                    }
+                }
+
+            }
+            //window.addEventListener( 'mousemove', onMouseMove, false );
+            //$('#test3d').( 'mousemove', onMouseMove, false );
+            //$('#test3d').on('mousemove', 'selector', onMouseMove);
+            $( "#test3d" ).mousemove(onMouseMove);
+
+        }, onProgress, onError );
+
+        //
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( windowX, windowY );
+        //container.appendChild( renderer.domElement );
+        $('#test3d').append( renderer.domElement );
+
+        //old
+        window.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+        window.addEventListener( 'resize', onWindowResize, false );
+
+
+    }
+
+    function onWindowResize() {
+        windowX=$('#test3d').width();
+        windowY=$('#test3d').height();
+        windowHalfX = windowX / 2;
+        windowHalfY = windowY / 2;
+
+
+        camera.aspect = windowX / windowY;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( windowX, windowY );
+
+    }
+
+    function onDocumentMouseMove( event ) {
+        // old
+        mouseX = ( event.clientX - windowHalfX ) / 2;
+        mouseY = ( event.clientY - windowHalfY ) / 2;
+
+
+        //mouse.x = ( (event.clientX -renderer.domElement.offsetLeft) / renderer.domElement.width ) * 2 - 1;
+        //mouse.y = -( (event.clientY - renderer.domElement.offsetTop) / renderer.domElement.height ) * 2 + 1;
+
+
+
+    }
+
+    ///////old
+    function animate() {
+
+        requestAnimationFrame( animate );
+
+        //newwwwwwwwww
+        controls.update()
+
+        render();
+
+    }
+
+
+
+
+
+    function render() {
+
+        // camera.position.x += ( mouseX - camera.position.x ) * .05;
+        // camera.position.y += ( - mouseY - camera.position.y ) * .05;
+        //
+        // camera.lookAt( scene.position );
+
+        renderer.render( scene, camera );
+
+    }
+
+
+
+</script>
+
+</body>
+</html>

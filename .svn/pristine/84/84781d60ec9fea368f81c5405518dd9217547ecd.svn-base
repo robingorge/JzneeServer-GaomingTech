@@ -1,0 +1,11 @@
+package com.gmkw.jznee.repository;
+
+import com.gmkw.jznee.entity.Tool;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
+
+public interface ToolRepository extends JpaRepository<Tool, Long> {
+
+}

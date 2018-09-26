@@ -1,0 +1,14 @@
+package com.gmkw.jznee.service;
+
+import com.gmkw.jznee.model.RestResult;
+
+public interface ToolService {
+    public RestResult getTools();
+
+//    public RestResult saveTool(String type, String warehouseBy, String location ,String picPath);
+    public RestResult addTool();
+
+    public RestResult updateTool(Long toolId);
+
+    public RestResult deleteTool(Long toolId);
+}

@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>振江股份 - 产品质量追溯平台</title>
+
+  <!-- Bootstrap -->
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+  <!-- NProgress -->
+  <link th:href="@{/css/nprogress.css}" rel="stylesheet">
+  <!-- iCheck -->
+  <link th:href="@{/css/green.css}" rel="stylesheet">
+
+  <!-- bootstrap-progressbar -->
+  <link th:href="@{/css/bootstrap-progressbar-3.3.4.min.css}" rel="stylesheet">
+  <!-- JQVMap -->
+  <link th:href="@{/css/jqvmap.min.css}" rel="stylesheet"/>
+  <!-- bootstrap-daterangepicker -->
+  <link th:href="@{/css/daterangepicker.css}" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link th:href="@{/css/custom.min.css}" rel="stylesheet">
+</head>
+
+<body class="nav-md footer_fixed menu_fixed">
+<div class="container body">
+  <div class="main_container">
+    <div class="col-md-3 left_col">
+      <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+          <a th:href="@{/dashboard}" class="site_title text-center">
+            <span >产品质量追溯平台</span>
+          </a>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <br/>
+
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section">
+            <ul class="nav side-menu">
+              <li>
+                <a th:href="@{/dashboard}">
+                  <i class="fa fa-dashboard"></i>
+                  首页
+                </a>
+              </li>
+              <li>
+                <a th:href="@{/component_tracing}">
+                  <i class="fa fa-cubes"></i>
+                  零部件追溯
+                </a>
+              </li>
+              <li>
+                <a th:href="@{/alerts}">
+                  <i class="fa fa-bullhorn"></i>
+                  预警提示
+                </a>
+              </li>
+              <li>
+                <a th:href="@{/cutting_tool_mgmt}">
+                  <i class="fa fa-eraser"></i>
+                  刀具管理
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /sidebar menu -->
+
+        <!-- /menu footer buttons -->
+        <div class="sidebar-footer hidden-small">
+          <a data-toggle="tooltip" data-placement="top" title="设定">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="全屏">
+            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="锁定">
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="退出" th:href="@{/}">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- /menu footer buttons -->
+      </div>
+    </div>
+
+    <!-- top navigation -->
+    <div class="top_nav">
+      <div class="nav_menu">
+        <nav>
+          <div class="nav toggle">
+            <a id="menu_toggle">
+              <i class="fa fa-bars"></i>
+            </a>
+          </div>
+
+          <img th:src="@{/images/jznee_logo.png}" alt="" height="30px;" style="margin-top:13px;">
+
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="">
+              <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                武达
+                <span class=" fa fa-angle-down"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-usermenu pull-right">
+                <li>
+                  <a href="javascript:;">操作说明</a>
+                </li>
+                <li>
+                  <a th:href="@{/}">
+                    <i class="fa fa-sign-out pull-right"></i>
+                    退出</a>
+                </li>
+              </ul>
+            </li>
+
+            <li role="presentation" class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-envelope-o"></i>
+                <span class="badge bg-red">6</span>
+              </a>
+              <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                <li>
+                  <a>
+                    <span class="image"><img th:src="@{images/img.jpg}" alt="Profile Image"/></span>
+                    <span>
+                          <span>wuda </span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="image"><img th:src="@{images/img.jpg}" alt="Profile Image"/></span>
+                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="image"><img th:src="@{images/img.jpg}" alt="Profile Image"/></span>
+                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="image"><img th:src="@{images/img.jpg}" alt="Profile Image"/></span>
+                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                  </a>
+                </li>
+                <li>
+                  <div class="text-center">
+                    <a>
+                      <strong>See All Alerts</strong>
+                      <i class="fa fa-angle-right"></i>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- /top navigation -->
+    <!-- page content -->
+    <div class="right_col" role="main">
+      <div class="page-title">
+        <div class="title_left">
+          <h3>刀具管理</h3>
+        </div>
+
+        <div class="title_right">
+          <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="输入刀具编号查询...">
+              <span class="input-group-btn">
+          <button class="btn btn-default" type="button">查询</button>
+        </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+
+      <div class="row">
+
+        <div class="col-md-12"></div>
+
+        <div class="col-md-8">
+
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>
+                <i class="fa fa-eraser"></i>
+                刀具列表
+              </h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <i class="fa fa-filter"></i>
+                    刀具类型
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a href="#">刀具类型1</a>
+                    </li>
+                    <li>
+                      <a href="#">刀具类型2</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <ul class="stats-overview">
+                <li>
+            <span class="name">
+              本月入库
+            </span>
+                  <span class="value text-success">
+              2300
+            </span>
+                </li>
+                <li>
+            <span class="name">
+              本月零用
+            </span>
+                  <span class="value text-success">
+              2000
+            </span>
+                </li>
+                <li class="hidden-phone">
+            <span class="name">
+              本月报废
+            </span>
+                  <span class="value text-success">
+              20
+            </span>
+                </li>
+              </ul>
+              <table class="table m-t-2 table-striped">
+                <thead>
+                <tr>
+                  <th>刀具编号</th>
+                  <th>刀具类型</th>
+                  <th>入库人</th>
+                  <th>入库时间</th>
+                  <th>存放位置</th>
+                  <th>当前状态</th>
+                  <th>领用人</th>
+                  <th>领用时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-4">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>
+                <i class="fa fa-wrench"></i>
+                刀具操作
+              </h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+              <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                  <li role="presentation" class="active">
+                    <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">新增</a>
+                  </li>
+                  <li role="presentation" class="">
+                    <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">领用</a>
+                  </li>
+                  <li role="presentation" class="">
+                    <a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">收回</a>
+                  </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                    <div class="row">
+                      <div class="col-md-12 text-center">
+                        <img th:src="@{/images/image_default.jpg}" class="m-t-2" width="80%">
+
+                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" style="margin-top: 30px;">
+                          <div class="form-group">
+                            <label class="control-label col-md-3" for="first-name">刀具编号
+                              <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9">
+                              <input type="text" id="" required="required" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3" for="first-name">刀具类型
+                              <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9">
+                              <select class="form-control">
+                                <option>-- 选择刀具类型 --</option>
+                                <option>刀具类型1</option>
+                                <option>刀具类型2</option>
+                                <option>刀具类型3</option>
+                                <option>刀具类型4</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3" for="first-name">入库人
+                              <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9">
+                              <select class="form-control">
+                                <option>-- 选择入库人 --</option>
+                                <option>王海</option>
+                                <option>李敏</option>
+                                <option>赵明亮</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3" for="first-name">存放位置
+                              <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9">
+                              <select class="form-control">
+                                <option>-- 选择存放位置 --</option>
+                                <option>位置1</option>
+                                <option>位置2</option>
+                                <option>位置3</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3" style="margin-top: 20px;">
+                              <button type="submit" class="btn btn-success">保存</button>
+                            </div>
+                          </div>
+
+                        </form>
+                      </div>
+
+                    </div>
+
+
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                    <div class="row">
+                      <div class="col-md-12 text-center">
+                        <img th:src="@{/images/image_default.jpg}" alt="" width="80%" class="m-t-2">
+
+                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" style="margin-top: 30px;">
+                          <div class="form-group">
+                            <label class="control-label col-md-3" for="first-name">刀具编号
+                              <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9">
+                              <input type="text" id="" required="required" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3" for="first-name">领用人
+                              <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9">
+                              <select class="form-control">
+                                <option>-- 选择领用人 --</option>
+                                <option>王海</option>
+                                <option>李敏</option>
+                                <option>赵明亮</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3" style="margin-top: 20px;">
+                              <button type="submit" class="btn btn-success">保存</button>
+                            </div>
+                          </div>
+
+                        </form>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                    <div class="row">
+                      <div class="col-md-12 text-center">
+                        <img th:src="@{/images/image_default.jpg}" alt="" width="80%" class="m-t-2">
+
+                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" style="margin-top: 30px;">
+                          <div class="form-group">
+                            <label class="control-label col-md-3" for="first-name">刀具编号
+                              <span class="required">*</span>
+                            </label>
+                            <div class="col-md-9">
+                              <input type="text" id="" required="required" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3" style="margin-top: 20px;">
+                              <button type="submit" class="btn btn-success">保存</button>
+                            </div>
+                          </div>
+
+                        </form>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- footer content -->
+  <!--<footer>-->
+    <!--<div class="pull-right">-->
+
+      <!--<a href="https://www.mos-gmkw.cn" target="_blank">本平台由 高铭科维科技无锡有限公司 提供支持</a>-->
+    <!--</div>-->
+    <!--<div class="clearfix"></div>-->
+  <!--</footer>-->
+  <!-- /footer content -->
+</div>
+</div>
+
+<!-- jQuery -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<!-- Bootstrap -->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<!-- FastClick -->
+<script th:src="@{/js/fastclick.js}"></script>
+<!-- NProgress -->
+<script th:src="@{/js/nprogress.js}"></script>
+<!-- Chart.js} -->
+<script th:src="@{/js/Chart.min.js}"></script>
+<!-- gauge.js} -->
+<script th:src="@{/js/gauge.min.js}"></script>
+<!-- bootstrap-progressbar -->
+<script th:src="@{/js/bootstrap-progressbar.min.js}"></script>
+<!-- iCheck -->
+<script th:src="@{/js/icheck.min.js}"></script>
+<!-- Skycons -->
+<script th:src="@{/js/skycons.js}"></script>
+<!-- Flot -->
+<script th:src="@{/js/jquery.flot.js}"></script>
+<script th:src="@{/js/jquery.flot.pie.js}"></script>
+<script th:src="@{/js/jquery.flot.time.js}"></script>
+<script th:src="@{/js/jquery.flot.stack.js}"></script>
+<script th:src="@{/js/jquery.flot.resize.js}"></script>
+<!-- Flot plugins -->
+<script th:src="@{/js/jquery.flot.orderBars.js}"></script>
+<script th:src="@{/js/jquery.flot.spline.min.js}"></script>
+<script th:src="@{/js/curvedLines.js}"></script>
+<!-- DateJS -->
+<script th:src="@{/js/date.js}"></script>
+<!-- JQVMap -->
+<script th:src="@{/js/jquery.vmap.js}"></script>
+<script th:src="@{/js/jquery.vmap.world.js}"></script>
+<script th:src="@{/js/jquery.vmap.sampledata.js}"></script>
+<!-- bootstrap-daterangepicker -->
+<script th:src="@{/js/moment.min.js}"></script>
+<script th:src="@{/js/daterangepicker.js}"></script>
+
+<!-- Custom Theme Scripts -->
+<script th:src="@{/js/custom.min.js}"></script>
+
+</body>
+</html>
+
+
